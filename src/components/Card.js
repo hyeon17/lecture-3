@@ -1,32 +1,10 @@
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
+import LazyImage from './LazyImage'
 
 function Card(props) {
-	const imgRef = useRef(null)
-
-	useEffect(() => {
-		const img = imgRef.current
-		if (!img) return
-
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					img.src = img.dataset.src
-					observer.disconnect()
-				}
-			},
-			{ threshold: 0.1 }
-		)
-
-		observer.observe(img)
-
-		return () => {
-			observer.disconnect()
-		}
-	}, [])
-
 	return (
 		<div className="Card text-center">
-			<img ref={imgRef} data-src={props.image}/>
+			<LazyImage src={props.image} webpSrc={props.webpImage} sources={props.sources}/>
 			<div className="p-5 font-semibold text-gray-700 text-xl md:text-lg lg:text-xl keep-all">
 				{props.children}
 			</div>
