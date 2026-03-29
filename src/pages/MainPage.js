@@ -12,11 +12,12 @@ import main3 from '../assets/main3.jpg';
 import main_items from '../assets/main-items.jpg';
 import main_parts from '../assets/main-parts.jpg';
 import main_styles from '../assets/main-styles.jpg';
+import banner_video from '../assets/banner-video.mp4';
 
 function MainPage(props) {
 	return (
 		<div className='MainPage -mt-16'>
-			<BannerVideo />
+			<BannerVideo sources={[{ src: banner_video, type: 'video/mp4' }]} />
 			<div className='mx-auto'>
 				<ThreeColumns
 					columns={[
